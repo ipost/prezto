@@ -49,6 +49,7 @@ fi
 
 # General
 alias rb='ruby'
+alias be='bundle exec'
 
 # Bundler
 if (( $+commands[bundle] )); then

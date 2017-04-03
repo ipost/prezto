@@ -15,11 +15,11 @@
 #
 
 function +vi-set_novcs_prompt_symbol {
-  _prompt_giddie_symbol='$'
+  _prompt_giddie_symbol='🤔 '
 }
 
 function +vi-set_vcs_prompt_symbol {
-  _prompt_giddie_symbol='$'
+  _prompt_giddie_symbol='🤔 '
 }
 
 function +vi-git_precmd {
@@ -58,9 +58,6 @@ function prompt_giddie_setup {
   zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
   zstyle ':vcs_info:*' unstagedstr '%F{green}!%f'
 
-  # Set ruby-info parameters.
-  zstyle ':prezto:module:ruby:info:version' format '%F{yellow}[%v]%f '
-
   # Set vcs_info hooks.
   # NOTE: Prior to Zsh v4.3.12, there are no static hooks, no vcs_info_hookadd
   #       function, and no 'no-vcs' hook.
@@ -68,14 +65,9 @@ function prompt_giddie_setup {
   zstyle ':vcs_info:git*+set-message:*' hooks set_vcs_prompt_symbol git_precmd
   zstyle ':vcs_info:*+set-message:*' hooks set_vcs_prompt_symbol
 
-  # Get Ruby version information.
-  if (( $+functions[ruby-info] )); then
-    ruby-info
-  fi
-
   # Define prompts.
   PROMPT='%(?..%F{red}%B-> [%?]%b%f
-)%F{magenta}%n%f@%F{yellow}%m%f|%F{green}${_prompt_giddie_pwd}%f${vcs_info_msg_0_} $ruby_info[version]
+)%F{magenta}%n%f@%F{yellow}%m%f|%F{green}${_prompt_giddie_pwd}%f${vcs_info_msg_0_}
 %F{cyan}${_prompt_giddie_symbol}%f '
   RPROMPT='${editor_info[keymap]}'
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
