@@ -5,6 +5,16 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
 interface environment with sane defaults, aliases, functions, auto completion,
 and prompt themes.
 
+My notes
+--------
+
+- Install zsh
+- Follow installation instructions below
+- Install fzf
+- Install Vundle and do `:PluginInstall`
+- Install jq
+
+
 Installation
 ------------
 
@@ -13,7 +23,9 @@ version is 4.3.17.
 
   1. Launch Zsh:
 
+```
         zsh
+```
 
   2. Clone the repository:
 
