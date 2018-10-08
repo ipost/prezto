@@ -9,6 +9,7 @@ My notes
 --------
 
 - Install zsh
+- Install rg
 - Follow installation instructions below
 - Install fzf
 - Install Vundle and do `:PluginInstall`
