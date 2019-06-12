@@ -199,3 +199,31 @@ function find-exec {
 function psu {
   ps -U "${1:-$LOGNAME}" -o 'pid,%cpu,%mem,command' "${(@)argv[2,-1]}"
 }
+
+# open workspace notes
+function ws-notes {
+  tmux rename-window "notes"
+  cd ~/notes
+  clear
+  tmux split-window -h \; \
+  send-keys 'cd ~/notes' C-j 'vim tasks' C-j \;
+}
+
+# open workspace zprezto
+function ws-zprezto {
+  tmux rename-window "zprezto"
+  cd ~/.zprezto
+  clear
+  tmux split-window -h \; \
+  send-keys 'cd ~/.zprezto' C-j 'vim modules/utility/init.zsh' C-j ':tabe modules/git/alias.zsh' C-j\;
+}
+
+# open workspace central
+function ws-central {
+  tmux rename-window "central"
+  cd ~/code/central
+  rvm use 2.4.5
+  clear
+  tmux split-window -h \; \
+  send-keys 'cd ~/code/central' C-j 'vim tasks' C-j ':tabe app/models/review.rb' C-j\;
+}

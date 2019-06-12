@@ -21,3 +21,9 @@ if (( $+commands[fortune] )); then
     print
   fi
 fi
+
+# open workspace
+if [ -z $TMUX ]; then
+  tmux new-session \; \
+  send-keys 'ws-notes' C-j \;
+fi
