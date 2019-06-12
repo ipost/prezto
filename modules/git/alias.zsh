@@ -3,6 +3,7 @@
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Isaac Post <post.isaac@gmail.com>
 #
 
 #
@@ -172,6 +173,8 @@ alias gSx='git-submodule-remove'
 alias gws='git status --ignore-submodules=${_git_status_ignore_submodules} --short'
 alias gwS='git status --ignore-submodules=${_git_status_ignore_submodules}'
 alias gwd='git diff --no-ext-diff'
+alias gwds='git diff --no-ext-diff --staged'
+alias gwDs='git diff --no-ext-diff --staged --word-diff'
 alias gwD='git diff --no-ext-diff --word-diff'
 alias gwr='git reset --soft'
 alias gwR='git reset --hard'
