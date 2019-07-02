@@ -10,6 +10,7 @@ My notes
 
 - Install zsh
 - Install rg
+- Install tmux
 - Follow installation instructions below
 - Install fzf
 - Install Vundle and do `:PluginInstall`

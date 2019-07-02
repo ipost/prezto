@@ -206,7 +206,9 @@ function ws-notes {
   cd ~/notes
   clear
   tmux split-window -h \; \
-  send-keys 'cd ~/notes' C-j 'vim tasks' C-j \;
+  send-keys \
+  'cd ~/notes' C-j \
+  'vim tasks' C-j \;
 }
 
 # open workspace zprezto
@@ -215,15 +217,76 @@ function ws-zprezto {
   cd ~/.zprezto
   clear
   tmux split-window -h \; \
-  send-keys 'cd ~/.zprezto' C-j 'vim modules/utility/init.zsh' C-j ':tabe modules/git/alias.zsh' C-j\;
+  send-keys 'cd ~/.zprezto' C-j \
+  "printf '\033]2;%s\033\\' 'vim'" C-j \
+  'vim modules/utility/init.zsh modules/git/alias.zsh' C-j \
+  ':tab all' C-j \
+  \;
 }
 
-# open workspace central
-function ws-central {
-  tmux rename-window "central"
-  cd ~/code/central
-  rvm use 2.4.5
+# open workspace magellan
+function ws-magellan {
+  tmux rename-window "magellan"
+  cd ~/code/magellan
+  rvm use $(cat .ruby-version)
   clear
   tmux split-window -h \; \
-  send-keys 'cd ~/code/central' C-j 'vim tasks' C-j ':tabe app/models/review.rb' C-j\;
+  send-keys \
+  'cd ~/code/magellan' C-j \
+  "printf '\033]2;%s\033\\' 'vim'" C-j \
+  'vim notes config/routes.rb' C-j \
+  ':tab all' C-j\;
+}
+
+# start BP microservices
+# sleeps ensure apps boot in correct order
+function start-services {
+  tmux rename-window "services"
+  tmux splitw -v
+  tmux select-pane -U
+  tmux send-keys \
+  "printf '\033]2;%s\033\\' 'authenticator'" C-j \
+  'cd ~/code/authenticator' C-j \
+  'rvm use $(cat .ruby-version)' C-j \
+  'bin/server' C-j \
+  \;
+  tmux splitw -h -p 33
+  tmux send-keys \
+  "printf '\033]2;%s\033\\' 'partner engine'" C-j \
+  'cd ~/code/partner-engine' C-j \
+  'rvm use $(cat .ruby-version)' C-j \
+  'sleep 3' C-j \
+  'bin/server' C-j \
+  \;
+  tmux select-pane -L
+  tmux splitw -h -p 50
+  tmux send-keys \
+  "printf '\033]2;%s\033\\' 'rules engine'" C-j \
+  'cd ~/code/rules-engine' C-j \
+  'rvm use $(cat .ruby-version)' C-j \
+  'sleep 6' C-j \
+  'bin/server' C-j \
+  \;
+  tmux select-pane -D
+  tmux send-keys \
+  "printf '\033]2;%s\033\\' 'carrier engine'" C-j \
+  'cd ~/code/carrier-engine' C-j \
+  'rvm use $(cat .ruby-version)' C-j \
+  'bin/server' C-j \
+  \;
+  tmux splitw -h -p 33
+  tmux send-keys \
+  "printf '\033]2;%s\033\\' 'pqi'" C-j \
+  'cd ~/code/pqi' C-j \
+  'nvm use 10' C-j \
+  'ng serve' C-j \
+  \;
+  tmux select-pane -L
+  tmux splitw -h -p 50
+  tmux send-keys \
+  "printf '\033]2;%s\033\\' 'partner portal'" C-j \
+  'cd ~/code/partner-portal' C-j \
+  'nvm use 10' C-j \
+  'ng serve' C-j \
+  \;
 }
