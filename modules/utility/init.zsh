@@ -238,6 +238,20 @@ function ws-magellan {
   ':tab all' C-j\;
 }
 
+# open workspace partner-engine
+function ws-partner-engine {
+  tmux rename-window "partner-engine"
+  cd ~/code/partner-engine
+  rvm use $(cat .ruby-version)
+  clear
+  tmux split-window -h \; \
+  send-keys \
+  'cd ~/code/partner-engine' C-j \
+  "printf '\033]2;%s\033\\' 'vim'" C-j \
+  'vim notes config/routes.rb' C-j \
+  ':tab all' C-j\;
+}
+
 # start BP microservices
 # sleeps ensure apps boot in correct order
 function start-services {
@@ -289,4 +303,11 @@ function start-services {
   'nvm use 10' C-j \
   'ng serve' C-j \
   \;
+}
+
+function update-app {
+  git checkout staging
+  git pull
+  bundle install
+  bin/rails db:migrate RAILS_ENV=development
 }

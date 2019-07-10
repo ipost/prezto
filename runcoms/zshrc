@@ -16,6 +16,8 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+# use ruby 2.6 from rvm as default ruby
+rvm use 2.6
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -40,3 +42,7 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+export PATH="$PATH:/usr/local/opt/python/libexec/bin:$HOME/Library/Python/3.7/bin"
+
+nvm use 10
