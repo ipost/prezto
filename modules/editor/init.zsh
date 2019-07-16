@@ -243,6 +243,10 @@ fi
 # Edit command in an external editor.
 bindkey -M vicmd "v" edit-command-line
 
+# Exit insert mode with jk/kj
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
+
 # Undo/Redo
 bindkey -M vicmd "u" undo
 bindkey -M vicmd "$key_info[Control]R" redo
