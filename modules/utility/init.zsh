@@ -288,21 +288,21 @@ function start-services {
   'rvm use $(cat .ruby-version)' C-j \
   'bin/server' C-j \
   \;
-  tmux splitw -h -p 33
-  tmux send-keys \
-  "printf '\033]2;%s\033\\' 'pqi'" C-j \
-  'cd ~/code/pqi' C-j \
-  'nvm use 10' C-j \
-  'ng serve' C-j \
-  \;
-  tmux select-pane -L
-  tmux splitw -h -p 50
-  tmux send-keys \
-  "printf '\033]2;%s\033\\' 'partner portal'" C-j \
-  'cd ~/code/partner-portal' C-j \
-  'nvm use 10' C-j \
-  'ng serve' C-j \
-  \;
+#   tmux splitw -h -p 33
+#   tmux send-keys \
+#   "printf '\033]2;%s\033\\' 'pqi'" C-j \
+#   'cd ~/code/pqi' C-j \
+#   'nvm use 10' C-j \
+#   'ng serve' C-j \
+#   \;
+#   tmux select-pane -L
+#   tmux splitw -h -p 50
+#   tmux send-keys \
+#   "printf '\033]2;%s\033\\' 'partner portal'" C-j \
+#   'cd ~/code/partner-portal' C-j \
+#   'nvm use 10' C-j \
+#   'ng serve' C-j \
+#   \;
 }
 
 function update-app {
