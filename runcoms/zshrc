@@ -53,3 +53,5 @@ nvm() {
 
 export PATH="$PATH:/usr/local/opt/python/libexec/bin:$HOME/Library/Python/3.7/bin"
 export PATH="./bin:$PATH"
+
+export TERM="xterm-256color"
