@@ -15,6 +15,14 @@ if (( ! $+commands[bundle] )); then
   return 1
 fi
 
+if (( CURRENT == 1 )); then
+  _describe -t commands "rails subcommand" _1st_arguments
+  return
+else
+  _files
+  return
+fi
+
 #
 # Aliases
 #

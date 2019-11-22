@@ -14,11 +14,6 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-# use ruby 2.6 from rvm as default ruby
-rvm use 2.6
-
 autoload -U add-zsh-hook
 
 export NVM_DIR="$HOME/.nvm"
@@ -55,3 +50,15 @@ export PATH="$PATH:/usr/local/opt/python/libexec/bin:$HOME/Library/Python/3.7/bi
 export PATH="./bin:$PATH"
 
 export TERM="xterm-256color"
+
+eval "$(rbenv init -)"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+# [[ -f /Users/isaac.post/.nvm/versions/node/v8.16.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/isaac.post/.nvm/versions/node/v8.16.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+# [[ -f /Users/isaac.post/.nvm/versions/node/v8.16.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/isaac.post/.nvm/versions/node/v8.16.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+# [[ -f /Users/isaac.post/.nvm/versions/node/v8.16.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/isaac.post/.nvm/versions/node/v8.16.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh

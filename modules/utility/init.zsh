@@ -228,7 +228,6 @@ function ws-zprezto {
 function ws-magellan {
   tmux rename-window "magellan"
   cd ~/code/magellan
-  rvm use $(cat .ruby-version)
   clear
   tmux split-window -h \; \
   send-keys \
@@ -242,7 +241,6 @@ function ws-magellan {
 function ws-partner-engine {
   tmux rename-window "partner-engine"
   cd ~/code/partner-engine
-  rvm use $(cat .ruby-version)
   clear
   tmux split-window -h \; \
   send-keys \
@@ -261,14 +259,12 @@ function start-services {
   tmux send-keys \
   "printf '\033]2;%s\033\\' 'authenticator'" C-j \
   'cd ~/code/authenticator' C-j \
-  'rvm use $(cat .ruby-version)' C-j \
   'bin/server' C-j \
   \;
   tmux splitw -h -p 33
   tmux send-keys \
   "printf '\033]2;%s\033\\' 'partner engine'" C-j \
   'cd ~/code/partner-engine' C-j \
-  'rvm use $(cat .ruby-version)' C-j \
   'sleep 3' C-j \
   'bin/server' C-j \
   \;
@@ -277,7 +273,6 @@ function start-services {
   tmux send-keys \
   "printf '\033]2;%s\033\\' 'rules engine'" C-j \
   'cd ~/code/rules-engine' C-j \
-  'rvm use $(cat .ruby-version)' C-j \
   'sleep 6' C-j \
   'bin/server' C-j \
   \;
@@ -285,24 +280,8 @@ function start-services {
   tmux send-keys \
   "printf '\033]2;%s\033\\' 'carrier engine'" C-j \
   'cd ~/code/carrier-engine' C-j \
-  'rvm use $(cat .ruby-version)' C-j \
   'bin/server' C-j \
   \;
-#   tmux splitw -h -p 33
-#   tmux send-keys \
-#   "printf '\033]2;%s\033\\' 'pqi'" C-j \
-#   'cd ~/code/pqi' C-j \
-#   'nvm use 10' C-j \
-#   'ng serve' C-j \
-#   \;
-#   tmux select-pane -L
-#   tmux splitw -h -p 50
-#   tmux send-keys \
-#   "printf '\033]2;%s\033\\' 'partner portal'" C-j \
-#   'cd ~/code/partner-portal' C-j \
-#   'nvm use 10' C-j \
-#   'ng serve' C-j \
-#   \;
 }
 
 function update-app {
@@ -310,4 +289,8 @@ function update-app {
   git pull
   bundle install
   bin/rails db:migrate RAILS_ENV=development
+}
+
+function recover-vim-session {
+  vim $(find . -name "*.swp")
 }
